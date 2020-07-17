@@ -45,16 +45,75 @@ $(document).ready(function () {
   //show password button
   $("#showpass").on('click', function () {
     var pass = $("#password");
-    var fieldtype= pass.attr('type');
-    if(fieldtype == 'password') {
-      pass.attr('type','text');
+    var fieldtype = pass.attr('type');
+    if (fieldtype == 'password') {
+      pass.attr('type', 'text');
       $(this).text("Hide password");
-    }else{
-      pass.attr('type','password');
+    } else {
+      pass.attr('type', 'password');
       $(this).text("Show Password");
     }
   });
 
+
+
+
+  //Auto Refresh Div Content
+  $("#auto").click(function () {
+    var content = $("#body").val();
+
+    if ($.trim(content) !== '') {
+
+      $.ajax({
+        url: "check/checkRefresh.php",
+        method: "POST",
+        data: { content: content },
+        dataType: "text",
+        success: function (data) {
+          $('#body').val("");
+        }
+      });
+      return false;
+    }
+
+
+  });
+  setInterval(function () {
+
+    $('#refreshstatus').load("check/getrefresh.php").fadeIn("slow");
+  }, 1000)   //1000 mili second
+
+
+
+
+  //live data search
+
+  $("#live").keyup(function () {
+    var key = $(this).val();
+    if (key != '') {
+      $.ajax({
+        url: 'check/checklivesearch.php',
+        method: 'POST',
+        dataType: 'text',
+        data: { key: key },
+        success: function (data) {
+          $('#liveresult').html(data);
+        }
+      });
+    } else {
+      $('#liveresult').html("");
+    }
+  })
+
+
+
+
+
+  //auto save data
+
+  function autoSave() {
+    var content = $("")
+  }
 
 
 

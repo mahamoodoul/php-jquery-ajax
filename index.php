@@ -7,6 +7,9 @@
 			<li><a href="textbox.php" >Autocomplete Textbox</a></li>
 			<li><a href="showpass.php" >Show password </a></li>
 			<li><a href="hidepass.php" >hide password </a></li>
+			<li><a href="autorefresh.php" >Auto Refresh Div content </a></li>
+			<li><a href="livesearch.php" >ajax-live data search </a></li>
+			<li><a href="autosave.php" >ajax-auto save data </a></li>
 		</ul>
 	</div>
 </div>
